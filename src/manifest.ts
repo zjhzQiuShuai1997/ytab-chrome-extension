@@ -1,9 +1,10 @@
 const manifest = {
   manifest_version: 3,
   homepage_url: 'https://demo.xxx.com',
-  name: 'chome  extension demo ',
-  description: 'This is a demo',
-  version: '1.0',
+  name: 'yTab新标签页',
+  description:
+    'iTab 组件式图标自定义您的浏览器的标签页，精美日历、炫酷天气、每日头条、海量壁纸、常用网址随心订制',
+  version: '1.0.0',
   icons: {
     '16': 'icon/icon-16.png',
     '32': 'icon/icon-32.png',

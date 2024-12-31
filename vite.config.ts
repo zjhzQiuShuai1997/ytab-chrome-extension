@@ -32,9 +32,6 @@ export default ({ mode, command }) => {
     css: {
       devSourcemap: true
     },
-    rollupOptions: {
-      plugins: [nodePolyfills()]
-    },
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src')
@@ -48,13 +45,15 @@ export default ({ mode, command }) => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, './src/index.html'),
-          options: resolve(__dirname, './src/options.html')
+          options: resolve(__dirname, './src/options.html'),
+          pages: resolve(__dirname, './src/pages.html')
         },
         output: {
           chunkFileNames: 'static/js/[name]-[hash].js',
           entryFileNames: 'static/js/[name]-[hash].js',
           assetFileNames: 'static/[ext]/name-[hash].[ext]'
-        }
+        },
+        plugins: [nodePolyfills()]
       }
     }
   });

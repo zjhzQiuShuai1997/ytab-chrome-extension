@@ -7,16 +7,15 @@ console.log('=======');
 defineProps<{ msg: string }>();
 
 const count = ref(0);
-/* nextTick(() => {
+nextTick(() => {
   chrome.runtime.onConnectExternal.addListener((port: any) => {
     console.log(port);
   });
-}); */
+});
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
-  asdasd
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
