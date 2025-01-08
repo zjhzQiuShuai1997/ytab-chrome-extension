@@ -3,7 +3,7 @@ const manifest = {
   homepage_url: 'https://demo.xxx.com',
   name: 'yTab新标签页',
   description:
-    'iTab 组件式图标自定义您的浏览器的标签页，精美日历、炫酷天气、每日头条、海量壁纸、常用网址随心订制',
+    'yTab 组件式图标自定义您的浏览器的标签页，精美日历、炫酷天气、每日头条、海量壁纸、常用网址随心订制',
   version: '1.0.0',
   icons: {
     '16': 'icon/icon-16.png',
@@ -57,6 +57,7 @@ const manifest = {
     }
   },
   options_page: './options.html'
+  // devtools_page: 'http://localhost:30/index.html'
 };
 
 export default manifest;

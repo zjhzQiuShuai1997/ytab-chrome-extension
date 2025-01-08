@@ -42,9 +42,10 @@ export default ({ mode, command }) => {
       emptyOutDir: true,
       cssCodeSplit: true,
       sourcemap: true,
+      // target: 'chrome-extension',
       rollupOptions: {
         input: {
-          main: resolve(__dirname, './src/index.html'),
+          main: resolve(__dirname, './src/pages.html'),
           options: resolve(__dirname, './src/options.html'),
           pages: resolve(__dirname, './src/pages.html')
         },

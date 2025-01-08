@@ -13,7 +13,7 @@
 }
 .slide {
   width: 120px;
-  height: 100%;
+  height: 100vh;
   background: gray;
 }
 </style>
