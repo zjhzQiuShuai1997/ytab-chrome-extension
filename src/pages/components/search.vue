@@ -12,7 +12,7 @@
       <input v-model="searchText" class="input-box" placeholder="输入搜索内容" @keyup.enter="search" />
     </div>
     <div class="search-icon" @click="search">
-      <svg-icon name="search-icon" size="28"></svg-icon>
+      <svg-icon name="search-icon" size="20"></svg-icon>
     </div>
     <div class="box">
       <div ref="boxRef" class="list">
@@ -35,32 +35,37 @@
 </template>
 <script lang="ts" setup>
   import { ref, computed } from 'vue';
+  interface SelectItem {
+    id: number;
+    icon: string;
+    name: string;
+    url: string;
+  }
+
 
   const activityKey = ref(0);
   const searchText = ref('');
-  const selectList = ref<
-    Array<{
-      icon: string;
-      name: string;
-      url: string;
-    }>
-  >([
+  const selectList = ref<SelectItem[]>([
     {
+      id: 1,
       name: '百度',
       icon: 'https://files.codelife.cc/itab/search/baidu.svg',
       url: 'https://www.baidu.com/s?wd='
     },
     {
+      id: 2,
       name: '必应',
       icon: 'https://files.codelife.cc/itab/search/bing.svg',
       url: 'https://cn.bing.com/search?q='
     },
     {
+      id: 3,
       name: 'Google',
       icon: 'https://files.codelife.cc/itab/search/google.svg',
       url: 'https://www.google.com/search?q='
     },
     {
+      id: 4,
       name: 'github',
       icon: 'https://files.codelife.cc/itab/search/github.svg',
       url: 'https://github.com/search?q='
@@ -76,18 +81,15 @@
   const changeSearchApp = () => {
     boxRef.value?.classList.toggle('list-active');
   };
-  const changeSearchIcon = (item: {
-    icon: string;
-    name: string;
-    url: string;
-  }) => {
-    activityKey.value = selectList.value.findIndex((el) => el.icon === item.icon);
+  const changeSearchIcon = (item: SelectItem) => {
+    activityKey.value = selectList.value.findIndex((el) => el.id === item.id);
+    boxRef.value?.classList.toggle('list-active');
   };
 </script>
-<style scoped>
+<style lang="scss" scoped>
   .search {
     width: 600px;
-    height: 50px;
+    height: 45px;
     border-radius: 25px;
     border: 1px solid #ccc;
     background-color: rgba(225, 225, 225, 0.7);
@@ -108,7 +110,7 @@
   }
 
   .select:hover {
-    background-color: rgba(225, 225, 225, 0.8);
+    background-color: var(--alpha-bg);
   }
 
   .select-icon {
@@ -130,6 +132,7 @@
   .select-change {
     width: 25px;
     text-align: center;
+    align-content: center;
   }
 
   .input {
@@ -152,6 +155,13 @@
     align-items: center;
     justify-content: center;
   }
+
+  .search-icon:hover {
+    background-color: var(--alpha-bg);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
 
   .box {
     width: 100%;

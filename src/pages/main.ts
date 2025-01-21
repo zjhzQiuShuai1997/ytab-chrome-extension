@@ -1,7 +1,9 @@
 import { createApp } from 'vue';
-import '../style.css';
+import '../styles/style.css';
 import App from './App.vue';
 import store from '../store/index';
+
+import '../styles/main.css'
 
 const app = createApp(App);
 // svg 组件

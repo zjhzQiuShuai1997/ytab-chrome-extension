@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import webExtension from '@samrum/vite-plugin-web-extension';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
-import path,{ resolve } from 'path';
+import path, { resolve } from 'path';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import manifest from './src/manifest';
 // https://vitejs.dev/config/
@@ -37,7 +37,14 @@ export default ({ mode, command }) => {
       open: true
     },
     css: {
-      devSourcemap: true
+      devSourcemap: true,
+      preprocessorOptions: {
+        scss: {
+          javascriptEnabled: true,
+          additionalData: `@use './src/styles/variables' as *;`,
+          api: 'modern-compiler' // 或者使用 "modern"
+        }
+      }
     },
     resolve: {
       alias: {
