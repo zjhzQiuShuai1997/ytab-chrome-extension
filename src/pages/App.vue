@@ -16,14 +16,38 @@
         </button>
       </div>
     </div>
+    <div class="main">
+      <div class="search-box">
+        <SearchComponent />
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { useUserStore } from '@/store';
+import { getAppList } from '@/api/api';
+import SearchComponent from './components/search.vue';
 
 const imgUrl = ref(
   'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp'
 );
+const userStore = useUserStore();
+console.log('userStore:', userStore);
+
+const getAppListData = async () => {
+  try {
+    const res = await getAppList();
+    console.log('res', res);
+  } catch (error) {
+    console.log('获取app出错：', error);
+  }
+};
+
+onMounted(() => {
+  // imgUrl.value = userStore.avatar;
+  getAppListData();
+});
 </script>
 <style scoped>
 .container {
@@ -32,6 +56,7 @@ const imgUrl = ref(
   padding: 0;
   margin: 0;
   background: #888;
+  display: flex;
 }
 .slide {
   width: 55px;
@@ -82,5 +107,16 @@ const imgUrl = ref(
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.main {
+  width: 100%;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 100px;
+}
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 </style>
