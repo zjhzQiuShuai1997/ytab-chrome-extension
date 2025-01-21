@@ -2,7 +2,8 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import webExtension from '@samrum/vite-plugin-web-extension';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
-import { resolve } from 'path';
+import path,{ resolve } from 'path';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import manifest from './src/manifest';
 // https://vitejs.dev/config/
 export default ({ mode, command }) => {
@@ -18,6 +19,12 @@ export default ({ mode, command }) => {
         manifest: {
           ...manifest
         }
+      }),
+      createSvgIconsPlugin({
+        // 指定需要缓存的图标文件夹
+        iconDirs: [path.resolve(__dirname, 'src/assets/icons')],
+        // 指定symbolld格式
+        symbolId: 'icon-[dir]-[name]'
       })
     ],
     define: {
