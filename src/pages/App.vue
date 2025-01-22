@@ -10,7 +10,7 @@
         { label: '删除' },
         { label: '查看' },
         { label: '复制' },
-      ]">
+      ]" @select="handleSelect">
         <div class="search-box">
           <SearchComponent />
         </div>
@@ -32,6 +32,9 @@
     console.log('item:', item);
   }
 
+  const handleSelect = (item: any) => {
+    console.log('item:', item);
+  }
 
 
   onMounted(() => { });

@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
   import { ref, defineProps, onMounted, nextTick, watchEffect } from 'vue';
-  import useContextMenu from './useContextMenu';
+  import { useContextMenu, formatStyle } from './useContextMenu';
 
   const props = defineProps({
     menuList: {
@@ -31,35 +31,8 @@
   const emit = defineEmits(['select']);
   const { x, windowWidth, y, windowHeight, showMenu } = useContextMenu(contextMenuRef);
 
-
-
-
-
-  function formatStyle(data: { x: number, y: number, windowWidth: number, windowHeight: number }) {
-    const { x, y, windowWidth, windowHeight } = data;
-
-    let left = x;
-    let top = y;
-    // 如果菜单超出屏幕宽度
-    if (x >= windowWidth) {
-      left = windowWidth - 150;
-    }
-    
-    if(y >= windowHeight) {
-      top = windowHeight - 150;
-    }
-
-    return { left: left + 'px', top: top + 'px' }
-  }
-
-
-
-
-
-
   // 在组件挂载后初始化 contextMenuRef
   onMounted(() => {
-    console.log("🚀 ~ Mounted contextMenuRef:", contextMenuRef.value);
   });
 
   // 菜单的点击事件
