@@ -1,3 +1,10 @@
 :root {
-  --alpha-bg:rgba(255,255,255,0.4)
+  --alpha-bg: rgba(255, 255, 255);
+  --img-bg: rgba(117, 125, 124);
+  --img-text: rgba(233, 233, 233);
+  --sidebar-opacity: 0.5;
+  --sidebar-width: 50px;
+  --icon-max-width: 95%;
+  --icon-radius:30px;
+  --main-bg: rgb(167, 167, 167);
 }

@@ -5,6 +5,7 @@ import nodePolyfills from 'rollup-plugin-polyfill-node';
 import path, { resolve } from 'path';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import manifest from './src/manifest';
+import UnoCSS from 'unocss/vite';
 // https://vitejs.dev/config/
 export default ({ mode, command }) => {
   console.log(mode, command);
@@ -14,6 +15,7 @@ export default ({ mode, command }) => {
     envDir: '../',
     publicDir: '../public',
     plugins: [
+      UnoCSS(),
       vue(),
       webExtension({
         manifest: {
@@ -32,9 +34,9 @@ export default ({ mode, command }) => {
     },
     server: {
       host: '0.0.0.0',
-      port: 30,
+      port: 3090,
       strictPort: true,
-      open: true
+      open: false
     },
     css: {
       devSourcemap: true,
@@ -47,9 +49,14 @@ export default ({ mode, command }) => {
       }
     },
     resolve: {
-      alias: {
-        '@': resolve(__dirname, 'src')
-      }
+      alias: [
+        {
+          find: '@',
+          replacement: path.resolve(__dirname, './src') // 路径别名
+        },
+        { find: 'components', replacement: '/src/components' }
+      ],
+      extensions: ['.js', '.json', '.ts'] // 使用路径别名时想要省略的后缀名，可以自己 增减
     },
     build: {
       outDir: '../dist',

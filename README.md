@@ -25,5 +25,13 @@
 
  1. 初步实现gird 布局
  2. 添加搜索功能
- 3. 添加 svg-icon 组件
- 4. 添加 scss 配置
+ 3. [√] 添加 svg-icon 组件
+ 4. [√] 添加 scss 配置
+
+### 2025.01.22
+
+ 1. [√] 新增 unocss 配置
+ 2. [√] 抽离左侧侧边栏
+ 3. [√] 完成左侧侧边栏功能
+ 4. [√] 右键菜单 npm install vue-context-menu --save 目前是手写的
+ 5. 拖拽配置  npm install vue-draggable-plus 或者 手写-拖拽

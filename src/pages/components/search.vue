@@ -32,9 +32,10 @@
       </div>
     </div>
   </div>
+
 </template>
 <script lang="ts" setup>
-  import { ref, computed } from 'vue';
+  import { ref, computed, useTemplateRef } from 'vue';
   interface SelectItem {
     id: number;
     icon: string;
@@ -71,7 +72,7 @@
       url: 'https://github.com/search?q='
     }
   ]);
-  const boxRef = ref<HTMLElement>();
+  const boxRef = useTemplateRef<HTMLElement>('boxRef');
   const selectIcon = computed(() => {
     return selectList.value[activityKey.value].icon;
   });
@@ -110,7 +111,7 @@
   }
 
   .select:hover {
-    background-color: var(--alpha-bg);
+    background-color: rgba(var(--alpha-bg), 0.4);
   }
 
   .select-icon {
@@ -157,7 +158,7 @@
   }
 
   .search-icon:hover {
-    background-color: var(--alpha-bg);
+    background-color: rgba(var(--alpha-bg), 0.4);
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
   }
@@ -167,7 +168,7 @@
     width: 100%;
     position: absolute;
     z-index: 10;
-    top: 60px;
+    top: 55px;
     left: 0;
   }
 
@@ -177,7 +178,7 @@
     border-radius: 25px;
     backdrop-filter: blur(8px);
     background-color: rgba(225, 225, 225, 0.8);
-    box-shadow: 0 0 10px 3px #00000029;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transform-origin: top;
     display: flex;
