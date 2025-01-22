@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@imengyu/vue3-context-menu": "^1.4.4",
     "@metamask/post-message-stream": "^6.1.1",
     "@metamask/providers": "^10.2.1",
     "@types/chrome": "^0.0.287",
@@ -19,7 +20,8 @@
     "pinia": "^2.3.0",
     "post-message-stream": "^3.0.0",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-draggable-plus": "^0.6.0"
   },
   "devDependencies": {
     "@samrum/vite-plugin-web-extension": "^3.1.1",

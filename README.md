@@ -33,5 +33,5 @@
  1. [√] 新增 unocss 配置
  2. [√] 抽离左侧侧边栏
  3. [√] 完成左侧侧边栏功能
- 4. [√] 右键菜单 npm install vue-context-menu --save 目前是手写的
- 5. 拖拽配置  npm install vue-draggable-plus 或者 手写-拖拽
+ 4. [√] 右键菜单 npm install -save @imengyu/vue3-context-menu 目前是手写的 https://www.npmjs.com/package/@imengyu/vue3-context-menu
+ 5. 拖拽配置  npm install vue-draggable-plus 或者 手写-拖拽 https://vue-draggable-plus.pages.dev/guide/#%E5%AE%89%E8%A3%85
