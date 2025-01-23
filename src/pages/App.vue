@@ -14,7 +14,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { onMounted, ref, reactive } from 'vue';
+  import { onMounted, ref, reactive,h } from 'vue';
   import { useUserStore } from '@/store';
   import type { MenuOptions } from '@imengyu/vue3-context-menu';
   import ContextMenu from '@imengyu/vue3-context-menu';
@@ -33,6 +33,14 @@
     items: [
       {
         label: 'Simple item',
+        icon: h('img', {
+          src: 'https://imengyu.top/assets/images/test/icon.png',
+          style: {
+            width: '20px',
+            height: '20px',
+          }
+        }),
+        divided: true, 
         onClick: () => alert('Click Simple item'),
       },
       {
