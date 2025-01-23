@@ -20,7 +20,7 @@
     },
     "allowSyntheticDefaultImports": true
   },
-  "types": ["vite/client", "element-plus/global", "pinia-plugin-persist"],
+  "types": ["vite/client", "element-plus/global", "pinia-plugin-persist","naive-ui/volar"],
   "skipLibCheck": true,
   "include": [
     "src/**/*.ts",
