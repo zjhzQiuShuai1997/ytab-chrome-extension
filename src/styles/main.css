@@ -2,9 +2,19 @@
   --alpha-bg: rgba(255, 255, 255);
   --img-bg: rgba(117, 125, 124);
   --img-text: rgba(233, 233, 233);
+  /* sidebar styles */
   --sidebar-opacity: 0.5;
   --sidebar-width: 50px;
-  --icon-max-width: 95%;
-  --icon-radius:30px;
+  /* main styles */
   --main-bg: rgb(167, 167, 167);
+  /* icon styles */
+  --icon-max-width: 95%;
+  --icon-radius: 30px;
+  --icon-size: 60px;
+  --icon-opacity: 1;
+  --icon-gap-x: 30px;
+  --icon-gap-y: 30px;
+  --icon-name:block;
+  --icon-nameColor: #fff;
+  --icon-nameSize: 12px;
 }

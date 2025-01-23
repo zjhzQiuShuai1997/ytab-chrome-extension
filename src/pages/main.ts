@@ -9,8 +9,6 @@ const app = createApp(App);
 import '@imengyu/vue3-context-menu/lib/vue3-context-menu.css'
 import ContextMenu from '@imengyu/vue3-context-menu'
 
-
-
 import 'virtual:uno.css'
 // svg 组件
 import 'virtual:svg-icons-register' // 引入注册脚本

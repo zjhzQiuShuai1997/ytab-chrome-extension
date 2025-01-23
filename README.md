@@ -33,10 +33,10 @@
  1. [x] 新增 unocss 配置
  2. [x] 抽离左侧侧边栏
  3. [x] 完成左侧侧边栏功能
- 4. [x] 右键菜单 npm install -save @imengyu/vue3-context-menu 目前是手写的 https://www.npmjs.com/package/@imengyu/vue3-context-menu
+ 4. [x] 右键菜单 npm install -save @imengyu/vue3-context-menu 目前是手写的 https://www.npmjs.com/package/@imengyu/vue3-context-menu | https://docs.imengyu.top/vue3-context-menu-docs/guide/theme.html
  5. [x] 拖拽配置  npm install vue-draggable-plus 或者 手写-拖拽 https://vue-draggable-plus.pages.dev/guide/#%E5%AE%89%E8%A3%85
 
 ### 2025.01.23
 
  1. [x] 引入组件库 naive-ui
- 2. [ ] 添加自动引入配置 
+
