@@ -34,7 +34,7 @@
   const menuData = reactive<MenuOptions>({
     items: [
       {
-        label: 'Simple item',
+        label: '添加图表',
         icon: h('img', {
           src: 'https://imengyu.top/assets/images/test/icon.png',
           style: {
@@ -46,7 +46,7 @@
         onClick: () => alert('Click Simple item'),
       },
       {
-        label: "Sub menu Example",
+        label: "换壁纸",
         children: [
           {
             label: "Back",
@@ -82,96 +82,22 @@
         ],
       },
       {
-        label: "Submenu with Submenu",
-        children: [
-          {
-            label: "Very long submenu",
-            divided: true,
-            children: [
-              { label: "Test1" },
-              { label: "Test2" },
-              { label: "Test3" },
-              { label: "Test4" },
-              { label: "Test5" },
-              { label: "Test6" },
-              { label: "Test7" },
-              { label: "Test8" },
-              { label: "Test9" },
-              { label: "Test10" },
-              { label: "Test11" },
-              { label: "Test12" },
-              { label: "Test13" },
-              { label: "Test14" },
-              { label: "Test15" },
-              { label: "Test16" },
-              { label: "Test17" },
-              { label: "Test18" },
-              { label: "Test19" },
-              { label: "Test20" },
-              { label: "Test21" },
-              { label: "Test22" },
-              { label: "Test23" },
-              { label: "Test24" },
-              { label: "Test25" },
-              { label: "Test26" },
-            ]
-          },
-          {
-            label: "A submenu",
-            children: [
-              { label: "Item1" },
-              { label: "Item2" },
-              { label: "Item3" },
-            ]
-          },
-          {
-            label: "A submenu2",
-            children: [
-              { label: "Item1" },
-              { label: "Item2" },
-              { label: "Item3" },
-              {
-                label: "A submenu",
-                children: [
-                  { label: "Item1" },
-                  { label: "Item2" },
-                  { label: "Item3" },
-                ]
-              },
-            ]
-          },
-        ]
-      },
-      {
-        label: 'Test item dynamic show and hide',
+        label: '本地搜索',
         clickClose: false,
         onClick: () => {
           menuData.items![4].hidden = !menuData.items![4].hidden;
         },
       },
       {
-        label: 'Click the item above to show/hide me',
-      },
-      {
-        label: 'Test item dynamic change the label',
-        clickClose: false,
-        onClick: () => {
-          if (menuData.items![5].label === 'Test item dynamic change the label')
-            menuData.items![5].label = 'My label CHANGED!';
-          else
-            menuData.items![5].label = 'Test item dynamic change the label';
-        },
-      },
-      {
-        label: 'Item with icon',
+        label: '立即备份',
         icon: "icon-reload-1",
       },
       {
-        label: "Item with svg icon",
+        label: "设置",
         svgIcon: "#icon-clock",
       },
       {
-        label: "Item with svg icon",
+        label: "编辑",
         svgIcon: "#icon-multiply",
         svgProps: {
           fill: '#f60',
@@ -232,10 +158,10 @@
     padding-top: 160px;
   }
 
-  .content-app{
+  .content-app {
     width: auto;
     height: auto;
-    padding:0 40px;
+    padding: 0 40px;
     box-sizing: border-box;
   }
 </style>
