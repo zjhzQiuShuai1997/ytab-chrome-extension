@@ -3,70 +3,222 @@
     <div class="slide-box">
       <SliderBar @change-current-item="handleCurrentItemChange" />
     </div>
-    <div class="main">
-      <useContextMenu
-        :menu-list="[
-          { label: '添加' },
-          { label: '编辑' },
-          { label: '删除' },
-          { label: '查看' },
-          { label: '复制' }
-        ]"
-        @select="handleSelect"
-      >
-        <div class="search-box">
-          <SearchComponent />
-        </div>
-      </useContextMenu>
+    <div class="main" @contextmenu="onContextMenu">
+      <div class="search-box">
+        <SearchComponent />
+      </div>
+      <div class="content-app">
+        <AppList />
+      </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
-import { useUserStore } from '@/store';
-import useContextMenu from '@/components/useContextMenu/index.vue';
-import SearchComponent from './components/search.vue';
-import SliderBar from './components/slider-bar.vue';
+  import { onMounted, ref, reactive } from 'vue';
+  import { useUserStore } from '@/store';
+  import type { MenuOptions } from '@imengyu/vue3-context-menu';
+  import ContextMenu from '@imengyu/vue3-context-menu';
+  import SearchComponent from './components/search.vue';
+  import SliderBar from './components/slider-bar.vue';
+  import AppList from './components/app-list.vue';
 
-const userStore = useUserStore();
-console.log('userStore:', userStore);
+  const userStore = useUserStore();
+  console.log('userStore:', userStore);
 
-const handleCurrentItemChange = <T>(item: T, index: number) => {
-  console.log('item:', item);
-};
+  const handleCurrentItemChange = <T>(item: T, index: number) => {
+    console.log('item:', item);
+  };
+  const menuContainer = ref<HTMLElement>();
+  const menuData = reactive<MenuOptions>({
+    items: [
+      {
+        label: 'Simple item',
+        onClick: () => alert('Click Simple item'),
+      },
+      {
+        label: "Sub menu Example",
+        children: [
+          {
+            label: "Back",
+            onClick: () => {
+              console.log("You click Back");
+            }
+          },
+          { label: "Forward", disabled: true },
+          {
+            label: "Reload",
+            divided: true,
+            icon: "icon-reload-1",
+            onClick: () => {
+              alert("You click Reload");
+            }
+          },
+          {
+            label: "Save as...",
+            icon: "icon-save",
+            onClick: () => {
+              alert("You click Save as");
+            }
+          },
+          {
+            label: "Print...",
+            icon: "icon-print",
+            onClick: () => {
+              alert("You click Print");
+            }
+          },
+          { label: "View source", icon: "icon-terminal" },
+          { label: "Inspect" }
+        ],
+      },
+      {
+        label: "Submenu with Submenu",
+        children: [
+          {
+            label: "Very long submenu",
+            divided: true,
+            children: [
+              { label: "Test1" },
+              { label: "Test2" },
+              { label: "Test3" },
+              { label: "Test4" },
+              { label: "Test5" },
+              { label: "Test6" },
+              { label: "Test7" },
+              { label: "Test8" },
+              { label: "Test9" },
+              { label: "Test10" },
+              { label: "Test11" },
+              { label: "Test12" },
+              { label: "Test13" },
+              { label: "Test14" },
+              { label: "Test15" },
+              { label: "Test16" },
+              { label: "Test17" },
+              { label: "Test18" },
+              { label: "Test19" },
+              { label: "Test20" },
+              { label: "Test21" },
+              { label: "Test22" },
+              { label: "Test23" },
+              { label: "Test24" },
+              { label: "Test25" },
+              { label: "Test26" },
+            ]
+          },
+          {
+            label: "A submenu",
+            children: [
+              { label: "Item1" },
+              { label: "Item2" },
+              { label: "Item3" },
+            ]
+          },
+          {
+            label: "A submenu2",
+            children: [
+              { label: "Item1" },
+              { label: "Item2" },
+              { label: "Item3" },
+              {
+                label: "A submenu",
+                children: [
+                  { label: "Item1" },
+                  { label: "Item2" },
+                  { label: "Item3" },
+                ]
+              },
+            ]
+          },
+        ]
+      },
+      {
+        label: 'Test item dynamic show and hide',
+        clickClose: false,
+        onClick: () => {
+          menuData.items![4].hidden = !menuData.items![4].hidden;
+        },
+      },
+      {
+        label: 'Click the item above to show/hide me',
+      },
+      {
+        label: 'Test item dynamic change the label',
+        clickClose: false,
+        onClick: () => {
+          if (menuData.items![5].label === 'Test item dynamic change the label')
+            menuData.items![5].label = 'My label CHANGED!';
+          else
+            menuData.items![5].label = 'Test item dynamic change the label';
+        },
+      },
+      {
+        label: 'Item with icon',
+        icon: "icon-reload-1",
+      },
+      {
+        label: "Item with svg icon",
+        svgIcon: "#icon-clock",
+      },
+      {
+        label: "Item with svg icon",
+        svgIcon: "#icon-multiply",
+        svgProps: {
+          fill: '#f60',
+        },
+      },
+    ],
+    iconFontClass: 'iconfont',
+    customClass: "class-a",
+    zIndex: 3,
+    minWidth: 230,
+    x: 0,
+    y: 0,
+  });
 
-const handleSelect = (item: any) => {
-  console.log('item:', item);
-};
+  const onContextMenu = (e: any) => {
+    //prevent the browser's default menu
+    e.preventDefault();
 
-onMounted(() => {});
+    const scaledPosition = ContextMenu.transformMenuPosition(e.target as HTMLElement, e.offsetX, e.offsetY, menuContainer.value);
+
+    menuData.getContainer = menuContainer.value;
+    menuData.x = scaledPosition.x;
+    menuData.y = scaledPosition.y;
+    console.log(scaledPosition.x, scaledPosition.y);
+
+    //show our menu
+    ContextMenu.showContextMenu(menuData as MenuOptions);
+  };
+
+  onMounted(() => { });
 </script>
 <style scoped>
-.container {
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
-  background: var(--main-bg);
-  display: flex;
-}
+  .container {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    background: var(--main-bg);
+    display: flex;
+  }
 
-.slide-box {
-  width: var(--sidebar-width);
-  z-index: 2;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  .slide-box {
+    width: var(--sidebar-width);
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
-.main {
-  width: 100%;
-  height: 100%;
-}
+  .main {
+    width: 100%;
+    height: 100vh;
+  }
 
-.search-box {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: 160px;
-}
+  .search-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 160px;
+  }
 </style>

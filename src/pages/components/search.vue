@@ -245,7 +245,10 @@ const changeSearchIcon = (item: SelectItem) => {
   box-sizing: content-box;
 }
 .item:hover .delete {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(var(--alpha-color), 0.8);
 }
 
 .item-img {
