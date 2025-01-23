@@ -4,8 +4,8 @@ import webExtension from '@samrum/vite-plugin-web-extension';
 import nodePolyfills from 'rollup-plugin-polyfill-node';
 import path, { resolve } from 'path';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-import manifest from './src/manifest';
 import UnoCSS from 'unocss/vite';
+import manifest from './src/manifest';
 // https://vitejs.dev/config/
 export default ({ mode, command }) => {
   console.log(mode, command);

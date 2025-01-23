@@ -1,6 +1,8 @@
 :root {
   --alpha-bg: rgba(255, 255, 255);
+  --alpha-color: 0, 0, 0;
   --img-bg: rgba(117, 125, 124);
+  --bg-info: #f5f5f5;
   --img-text: rgba(233, 233, 233);
   /* sidebar styles */
   --sidebar-opacity: 0.5;
