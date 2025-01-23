@@ -13,9 +13,11 @@ import 'virtual:uno.css';
 import 'virtual:svg-icons-register'; // 引入注册脚本
 import SvgIcon from '@/components/svgIcon/index.vue';
 
+import clickOutside from '../directive/clickOutside';
+
 const app = createApp(App); // 引入组件
 app.component('SvgIcon', SvgIcon);
-
+app.directive('click-outside', clickOutside);
 app.use(ContextMenu);
 app.use(store);
 app.mount('#app');

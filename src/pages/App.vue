@@ -14,7 +14,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { onMounted, ref, reactive,h } from 'vue';
+  import { onMounted, ref, reactive, h } from 'vue';
   import { useUserStore } from '@/store';
   import type { MenuOptions } from '@imengyu/vue3-context-menu';
   import ContextMenu from '@imengyu/vue3-context-menu';
@@ -25,9 +25,11 @@
   const userStore = useUserStore();
   console.log('userStore:', userStore);
 
+
   const handleCurrentItemChange = <T>(item: T, index: number) => {
-    console.log('item:', item);
+    console.log("🚀 ~ item:", item)
   };
+
   const menuContainer = ref<HTMLElement>();
   const menuData = reactive<MenuOptions>({
     items: [
@@ -40,7 +42,7 @@
             height: '20px',
           }
         }),
-        divided: true, 
+        divided: true,
         onClick: () => alert('Click Simple item'),
       },
       {
@@ -178,7 +180,7 @@
     ],
     iconFontClass: 'iconfont',
     customClass: "class-a",
-    zIndex: 3,
+    zIndex: 9999,
     minWidth: 230,
     x: 0,
     y: 0,
@@ -228,5 +230,12 @@
     display: flex;
     justify-content: center;
     padding-top: 160px;
+  }
+
+  .content-app{
+    width: auto;
+    height: auto;
+    padding:0 40px;
+    box-sizing: border-box;
   }
 </style>
