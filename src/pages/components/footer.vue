@@ -2,7 +2,10 @@
   <div class="footer">
     <div class="footer-box">
       <div class="footer-box_title" :title="footerText">{{ footerText }}</div>
-      <div class="footer-box_copy"></div>
+      <div class="footer-box_copy">
+        222
+        <!-- <svg-icon name="复制"></svg-icon> -->
+      </div>
       <div class="footer-box_refresh" @click="getTianGouText"></div>
     </div>
   </div>
@@ -23,7 +26,6 @@ const getTianGouText = () => {
     );
     httpRequest.send();
     httpRequest.addEventListener('load', () => {
-      console.log('结果', httpRequest.response);
       footerText.value = httpRequest.response;
     });
   } catch (error) {
@@ -51,7 +53,7 @@ onMounted(() => {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      // text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
       //   margin-right: 5px;
     }
     &_copy {
@@ -59,16 +61,16 @@ onMounted(() => {
       display: none;
       margin-right: 5px;
     }
-  }
-  &-box:hover {
-    cursor: pointer;
-    // background-color: rgba($color: #000000, $alpha: 0.1);
-    &_title {
-      width: 400px;
-      margin-right: 5px;
-    }
-    &_copy {
-      display: block;
+    &:hover {
+      cursor: pointer;
+      background-color: rgba($color: #000000, $alpha: 0.1);
+      &_title {
+        width: 400px;
+        margin-right: 5px;
+      }
+      .footer-box_copy {
+        display: block;
+      }
     }
   }
 }
