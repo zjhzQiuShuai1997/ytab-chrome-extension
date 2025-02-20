@@ -2,11 +2,12 @@
   <div class="footer">
     <div class="footer-box">
       <div class="footer-box_title" :title="footerText">{{ footerText }}</div>
-      <div class="footer-box_copy">
-        222
-        <!-- <svg-icon name="复制"></svg-icon> -->
+      <div class="footer-box_copy" @click="copyText">
+        <svg-icon name="copy"></svg-icon>
       </div>
-      <div class="footer-box_refresh" @click="getTianGouText"></div>
+      <div class="footer-box_copy" @click="getTianGouText">
+        <svg-icon name="refresh"></svg-icon>
+      </div>
     </div>
   </div>
 </template>
@@ -32,7 +33,16 @@ const getTianGouText = () => {
     console.log('error', error);
   }
 };
-
+const copyText = () => {
+  navigator.clipboard.writeText(footerText.value);
+  // const input = document.createElement('input');
+  // input.value = footerText.value; // 将要复制的文本放入输入框
+  // document.body.appendChild(input);
+  // input.select(); // 选择文本
+  // document.execCommand('copy'); // 执行复制命令
+  // document.body.removeChild(input); // 移除临时输入框
+  // console.log('Text copied to clipboard');
+};
 onMounted(() => {
   getTianGouText();
 });
@@ -45,11 +55,11 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   &-box {
-    width: 450px;
+    width: 550px;
     display: flex;
     padding: 10px 25px;
     &_title {
-      width: 400px;
+      width: 500px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -60,6 +70,7 @@ onMounted(() => {
       width: 20px;
       display: none;
       margin-right: 5px;
+      cursor: pointer;
     }
     &:hover {
       cursor: pointer;
